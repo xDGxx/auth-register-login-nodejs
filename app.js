@@ -6,6 +6,9 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
+// Importando o middleware de autenticação
+const checkToken = require('./src/middlewares/authMiddleware');
+
 //dando inicio ao express na aplicação
 const app = express()
 
@@ -13,7 +16,7 @@ const app = express()
 app.use(express.json())
 
 //Models = Requisição de usuário
-const User = require('./models/User')
+const User = require('./src/models/User')
 
 //Rota pública para usuário (Open Route)
 app.get('/', (req, rest) => {
